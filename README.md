@@ -1,33 +1,45 @@
-# free-shogi-board
+# ただの将棋盤 (Free Shogi Board)
 
-This template should help get you started developing with Vue 3 in Vite.
+## 概要
+普通の(現実世界の)将棋盤と同じ操作ができることを目指して、なるべくシンプルに開発したウェブアプリです。普通の将棋盤との違いは、以下の通りです。
 
-## Recommended IDE Setup
+* 盤上の駒を、自分の駒があるマスへは移動できない。
+* 盤上の駒を、相手の駒があるマスに移動させると、自動的に相手の駒を自分の駒台へ移動した上で、駒を移動する。
+* 他の駒が置いてある場所には持駒を置けない
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Vue.jsを利用して開発しました。将棋盤部分などはSVGを利用しています。
 
-## Customize configuration
+将棋盤を使用するウェブサービスの開発などにご利用ください。
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+![ただの将棋盤のスクリーンショット](images/free-shogi-board-screenshot.png)
 
-## Project Setup
+## セットアップ方法
+セットアップするには、以下のコマンドを実行してください。
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## 開発用サーバの起動方法
+開発用サーバを起動して動作を確認するには、以下のコマンドを実行して、表示されるURLにブラウザからアクセスしてください。
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## ビルド方法
+ビルドするには、以下のコマンドを実行してください。
+`/dist`ディレクトリにビルドされます。
 
 ```sh
 npm run build
 ```
 
-### 謝辞
+## 操作方法
+動かしたい駒をクリックした後、動かしたい先をクリックすると、駒を動かすことができます。将棋盤の右と左にある縦長のスペースが、先手の駒台と後手の駒台です。将棋盤の下にある横長のスペースが使わない駒置き場です。駒落ちの場合などにご利用ください。
 
+## 謝辞
 駒画像は [Shogi Images](https://sunfish-shogi.github.io/shogi-images/) のものを使用させていただきました。
+
+## ライセンス (License)
+This software is released under the MIT License, see LICENSE.
