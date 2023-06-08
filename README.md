@@ -3,6 +3,8 @@
 ## 概要
 普通の(現実世界の)将棋盤と同じ操作ができることを目指して、なるべくシンプルに開発したウェブアプリです。[Vue.js](https://ja.vuejs.org/)と[SVG](https://developer.mozilla.org/ja/docs/Web/SVG)を利用して開発しました。
 
+[GitHub Pages のウェブページ](https://hideboz.github.io/free-shogi-board/) でご試用いただけます。
+
 将棋盤を使用するウェブサービスなどにご利用ください。
 
 ![ただの将棋盤のスクリーンショット](images/free-shogi-board-screenshot.png)
@@ -23,7 +25,7 @@ npm run dev
 
 ## ビルド方法
 ビルドするには、以下のコマンドを実行してください。
-`/dist`ディレクトリにビルドされます。
+`/docs`ディレクトリにビルドされます。
 
 ```sh
 npm run build
