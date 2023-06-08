@@ -1,5 +1,5 @@
 <template>
-    <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+    <svg style="display: none;" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
         <defs>
 
             <!-- 歩 (先手) -->

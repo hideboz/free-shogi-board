@@ -1,6 +1,6 @@
 <script setup>
 import KomaSymbols from './components/KomaSymbols.vue'
-import { ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount, onMounted } from 'vue'
 
 // マスを表わすクラス
 class Masu {
@@ -726,9 +726,25 @@ function clickSetUra() {
     rightClickMenu.hideMenu();
 }
 
+// SVGの Height と Width
+const svgSize = ref(0);
+
+// SVGの大きさをセットする
+function setSVGTopSize() {
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    svgSize.value = (w < h) ? w : h;
+}
+
 // コンポーネントがマウントされる直前に呼び出されるフックを登録
 onBeforeMount(() => {
     banKomaList.setHirate();
+})
+
+// コンポーネントがマウントされた後に呼び出されるコールバックを登録
+onMounted(() => {
+    setSVGTopSize();
+    window.addEventListener('resize', setSVGTopSize);
 })
 
 </script>
@@ -736,8 +752,7 @@ onBeforeMount(() => {
 <template>
     <KomaSymbols />
 
-    <svg width="100%" height="100%" viewBox="0 0 1190 1190" xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMinYMin meet" id="svgtop">
+    <svg :width="svgSize" :height="svgSize" viewBox="0 0 1190 1190" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" style="display: block; margin-left: auto; margin-right: auto;">
 
         <defs>
             <g id="stars" style="stroke: black; fill: black;">
@@ -752,24 +767,24 @@ onBeforeMount(() => {
             <!-- 駒台全体 -->
             <rect width="100" height="920" x="0" y="0" style="fill: #f7c167;" />
             <rect @click="clickSenteKomadai" width="100" height="920" x="0" y="0" class="square" />
-            
+
             <use href="#Sente" x="20" y="-50" width="60" height="60" />
-            
+
             <g transform="translate(10, 20)">
                 <!-- 持駒 -->
                 <use width="80" height="80" v-for="(k, idx) in senteMochiKomaList.getList()" :key="k.getKey()" x="0"
-                :y="idx * 80" :href="k.getSymbolid()" />
-                
+                    :y="idx * 80" :href="k.getSymbolid()" />
+
                 <!-- 各持駒の個数 -->
                 <g id="nMochiKomaSente"
-                style="text-anchor: start; font-size: 30px; font-weight: bold; stroke: white; fill: red;">
-                <text v-for="(k, idx) in senteMochiKomaList.getList()" :key="k.getKey()" x="60" :y="idx * 80 + 70">{{
-                    k.getN() > 1 ? k.getN() : '' }}</text>
+                    style="text-anchor: start; font-size: 30px; font-weight: bold; stroke: white; fill: red;">
+                    <text v-for="(k, idx) in senteMochiKomaList.getList()" :key="k.getKey()" x="60" :y="idx * 80 + 70">{{
+                        k.getN() > 1 ? k.getN() : '' }}</text>
                 </g>
-                
+
                 <!-- 持駒の場所のマス -->
                 <rect v-for="(k, idx) in senteMochiKomaList.getList()" @click="clickSenteMochiKoma($event, idx)" width="80"
-                height="80" class="square" :key="k.getKey()" x="0" :y="idx * 80" />
+                    height="80" class="square" :key="k.getKey()" x="0" :y="idx * 80" />
             </g>
         </g>
 
@@ -778,27 +793,27 @@ onBeforeMount(() => {
             <!-- 駒台全体 -->
             <rect width="100" height="920" x="0" y="0" style="fill: #f7c167;" />
             <rect @click="clickGoteKomadai" width="100" height="920" class="square" x="0" y="0" />
-            
+
             <use href="#Gote" x="20" y="-50" width="60" height="60" />
-            
+
             <g transform="translate(10, 20)">
                 <!-- 持駒 -->
                 <use width="80" height="80" v-for="(k, idx) in goteMochiKomaList.getList()" :key="k.getKey()" x="0"
-                :y="idx * 80" :href="k.getSymbolid()" />
-                
+                    :y="idx * 80" :href="k.getSymbolid()" />
+
                 <!-- 各持駒の個数 -->
                 <g id="nMochiKomaGote"
-                style="text-anchor: start; font-size: 30px; font-weight: bold; stroke: white; fill: red;">
-                <text v-for="(k, idx) in goteMochiKomaList.getList()" :key="k.getKey()" x="60" :y="idx * 80 + 70">{{
-                    k.getN() > 1 ? k.getN() : '' }}</text>
+                    style="text-anchor: start; font-size: 30px; font-weight: bold; stroke: white; fill: red;">
+                    <text v-for="(k, idx) in goteMochiKomaList.getList()" :key="k.getKey()" x="60" :y="idx * 80 + 70">{{
+                        k.getN() > 1 ? k.getN() : '' }}</text>
                 </g>
-                
+
                 <!-- 持駒の場所のマス -->
                 <rect v-for="(k, idx) in goteMochiKomaList.getList()" @click="clickGoteMochiKoma($event, idx)" width="80"
-                height="80" class="square" :key="k.getKey()" x="0" :y="idx * 80" />
+                    height="80" class="square" :key="k.getKey()" x="0" :y="idx * 80" />
             </g>
         </g>
-        
+
         <!-- 使わない駒置き場 -->
         <g transform="translate(130, 1000)">
             <rect width="920" height="100" x="0" y="0" style="fill: #f7c167;" />
@@ -809,8 +824,8 @@ onBeforeMount(() => {
 
             <g transform="translate(40, 0)">
                 <!-- 駒 -->
-                <use width="80" height="80" v-for="(k, idx) in gomibakoKomaList.getList()" :key="k.getKey()"
-                    :x="idx * 80" y="10" :href="k.getSymbolid()" />
+                <use width="80" height="80" v-for="(k, idx) in gomibakoKomaList.getList()" :key="k.getKey()" :x="idx * 80"
+                    y="10" :href="k.getSymbolid()" />
 
                 <!-- 各駒の個数 -->
                 <g style="text-anchor: middle; font-size: 30px; font-weight: bold; stroke: white; fill: red;">
@@ -908,6 +923,7 @@ onBeforeMount(() => {
 </template>
 
 <style scoped>
+
 .clicked {
     fill-opacity: 0.4;
     fill: red;
