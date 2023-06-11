@@ -726,25 +726,9 @@ function clickSetUra() {
     rightClickMenu.hideMenu();
 }
 
-// SVGの Height と Width
-const svgSize = ref(0);
-
-// SVGの大きさをセットする
-function setSVGTopSize() {
-    let w = window.innerWidth;
-    let h = window.innerHeight;
-    svgSize.value = (w < h) ? w : h;
-}
-
 // コンポーネントがマウントされる直前に呼び出されるフックを登録
 onBeforeMount(() => {
     banKomaList.setHirate();
-})
-
-// コンポーネントがマウントされた後に呼び出されるコールバックを登録
-onMounted(() => {
-    setSVGTopSize();
-    window.addEventListener('resize', setSVGTopSize);
 })
 
 </script>
@@ -752,7 +736,7 @@ onMounted(() => {
 <template>
     <KomaSymbols />
 
-    <svg :width="svgSize" :height="svgSize" viewBox="0 0 1190 1190" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" style="display: block; margin-left: auto; margin-right: auto;">
+    <svg width="100%" height="100%" viewBox="0 0 1190 1190" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet">
 
         <defs>
             <g id="stars" style="stroke: black; fill: black;">
