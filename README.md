@@ -38,5 +38,7 @@ npm run build
 駒画像は [Shogi Images](https://sunfish-shogi.github.io/shogi-images/) のものを使用させていただきました。
 
 ## ライセンス (License)
-本ソフトウェアはMITライセンスで公開されています。LICENSEを参照してください。
-(This software is released under the MIT License, see LICENSE.)
+本ソフトウェアはGNUアフェロ一般公衆ライセンスで公開されています。LICENSEを参照してください。
+(This software is released under the GNU Affero General Public License, see LICENSE.)
+
+![GNUアフェロ一般公衆ライセンス](images/agplv3-with-text-100x42.png)
