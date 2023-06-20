@@ -272,7 +272,7 @@ class BanKomaList {
     }
 
     remove(masu) {
-        let idx = this.getIndexAt(masu);
+        const idx = this.getIndexAt(masu);
         if (idx != -1) {
             this.getList().splice(idx, 1);
         }
@@ -307,7 +307,7 @@ class BanKomaList {
     }
 
     getKoma(masu) {
-        let idx = this.getIndexAt(masu);
+        const idx = this.getIndexAt(masu);
         if (idx != -1) {
             return this.getList()[idx].getKoma();
         }
@@ -350,7 +350,7 @@ class BanKomaList {
 
     // ひとつ前にクリックされた駒を削除して返す
     pickPreClickKoma() {
-        let koma = this.getKoma(this.preClickMasu)
+        const koma = this.getKoma(this.preClickMasu)
         this.remove(this.preClickMasu);
         return koma;
     }
@@ -443,7 +443,7 @@ class MochiKomaList {
     }
 
     add(koma) {
-        let idx = this.getList().findIndex((mk) => koma.getName() === mk.getName());
+        const idx = this.getList().findIndex((mk) => koma.getName() === mk.getName());
 
         if (idx === -1) {
             this.getList().push(new MochiKoma(koma, 1, this.senteFlag));
@@ -464,7 +464,7 @@ class MochiKomaList {
     // 盤上に打つときに使うメンバ関数
     // 後手の持駒を打つときは、後手の向きにする
     getKoma(idx) {
-        let koma = this.getList()[idx].getKoma();
+        const koma = this.getList()[idx].getKoma();
         if (!this.senteFlag) {
             koma.toGote();
         }
@@ -498,7 +498,7 @@ class MochiKomaList {
 
     // ひとつ前にクリックされた持駒を打つ (komaを削除して、返す)
     pickPreClickKoma() {
-        let koma = this.getKoma(this.preClickIndex)
+        const koma = this.getKoma(this.preClickIndex)
         this.remove(this.preClickIndex);
         return koma;
     }
@@ -577,12 +577,12 @@ class RightClickMenu {
 }
 
 // 各クラスのインスタンス (グローバル変数) 
-let masuList = new MasuList();
-let banKomaList = new BanKomaList();
-let senteMochiKomaList = new MochiKomaList(true);
-let goteMochiKomaList = new MochiKomaList(false);
-let gomibakoKomaList = new MochiKomaList(true);
-let rightClickMenu = new RightClickMenu();
+const masuList = new MasuList();
+const banKomaList = new BanKomaList();
+const senteMochiKomaList = new MochiKomaList(true);
+const goteMochiKomaList = new MochiKomaList(false);
+const gomibakoKomaList = new MochiKomaList(true);
+const rightClickMenu = new RightClickMenu();
 
 // 前のクリックをリセットする
 function resetClickAll() {
@@ -663,10 +663,10 @@ function clickMasu(event, masu) {
     // ひとつ前にマスがクリックされていた場合
     if (banKomaList.wasClicked()) {
         if (!masu.equal(banKomaList.getPreClickMasu())) { // 違うマスがクリックされた場合
-            let moveKoma = banKomaList.getKoma(banKomaList.getPreClickMasu()); // 移動する駒
+            const moveKoma = banKomaList.getKoma(banKomaList.getPreClickMasu()); // 移動する駒
 
             // 駒を移動 (取った駒が返される)
-            let torareKoma = banKomaList.moveTo(banKomaList.getPreClickMasu(), masu);
+            const torareKoma = banKomaList.moveTo(banKomaList.getPreClickMasu(), masu);
 
             if (torareKoma) {
                 if (moveKoma.isSente()) { // 先手が駒を取った場合
@@ -706,7 +706,7 @@ function rightClickMasu(event, masu) {
     resetClickAll();
 
     // クリックされたマス目に駒があればメニューを表示する
-    let koma = banKomaList.getKoma(masu);
+    const koma = banKomaList.getKoma(masu);
     if (koma) {
         rightClickMenu.set(event.target, masu, koma);
     }
