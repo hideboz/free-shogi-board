@@ -1,4 +1,8 @@
-# ただの将棋盤 (Free Shogi Board)
+# Free-Shogi-Board (ただの将棋盤)
+
+Copyright (C) 2023 Hideaki Sakai
+See the end of the file for license conditions.
+ライセンス条件に関しては、このファイルの最後を見てください。
 
 ## 概要
 普通の(現実世界の)将棋盤と同じ操作ができることを目指して、なるべくシンプルに開発したウェブアプリです。[Vue.js](https://ja.vuejs.org/)と[SVG](https://developer.mozilla.org/ja/docs/Web/SVG)を利用して開発しました。
@@ -38,7 +42,22 @@ npm run build
 駒画像は [Shogi Images](https://sunfish-shogi.github.io/shogi-images/) のものを使用させていただきました。
 
 ## ライセンス (License)
-本ソフトウェアはGNUアフェロ一般公衆ライセンスで公開されています。LICENSEを参照してください。
-(This software is released under the GNU Affero General Public License, see LICENSE.)
+本ソフトウェアはGNUアフェロ一般公衆ライセンスで公開されています。COPYINGを参照してください。
+(This software is released under the GNU Affero General Public License, see COPYING.)
 
 ![GNUアフェロ一般公衆ライセンス](images/agplv3-with-text-100x42.png)
+
+This file is part of Free-Shogi-Board.
+
+Free-Shogi-Board is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Free-Shogi-Board is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with Free-Shogi-Board.  If not, see <https://www.gnu.org/licenses/>.
