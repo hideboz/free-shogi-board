@@ -1,11 +1,12 @@
-# Free-Shogi-Board (ただの将棋盤)
+# Free-Shogi-Board (ただの将棋盤 (JavaScript版))
 
 Copyright (C) 2023 Hideaki Sakai
 See the end of the file for license conditions.
 ライセンス条件に関しては、このファイルの最後を見てください。
 
 ## 概要
-普通の(現実世界の)将棋盤と同じ操作ができることを目指して、なるべくシンプルに開発したウェブアプリです。[Vue.js](https://ja.vuejs.org/)と[SVG](https://developer.mozilla.org/ja/docs/Web/SVG)を利用して開発しました。
+普通の(現実世界の)将棋盤と同じ操作ができることを目指して、なるべくシンプルに開発したウェブアプリです。
+[Vue.js](https://ja.vuejs.org/) (JavaScript) と[SVG](https://developer.mozilla.org/ja/docs/Web/SVG)を利用して開発しました。
 
 [GitHub Pages のウェブページ](https://hideboz.github.io/free-shogi-board/) でご試用いただけます。
 
